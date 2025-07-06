@@ -1,443 +1,539 @@
 <!DOCTYPE html>
-<head>
-  <title>B2N - Your Site Title</title>
-  <meta name="description" content="B2N is a creative platform for modern web design.">
-  <meta name="robots" content="index, follow">
-</head>
-
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B2N — Built to Next</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+    <!-- SEO Meta Tags -->
+    <title>B2N DESIGNS | Creative Design & Branding Agency in India</title>
+    <meta name="description" content="B2N DESIGNS is a leading creative design agency in India, specializing in modern visual identity, poster design, and branding solutions that elevate your brand.">
+    <meta name="keywords" content="Creative design agency in India, Poster and branding design experts, Modern visual identity company, B2N DESIGNS official site, graphic design, branding, logo design">
+    <meta name="author" content="B2N DESIGNS">
+    <link rel="canonical" href="https://b2ndesigns.netlify.app/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://b2ndesigns.netlify.app/">
+    <meta property="og:title" content="B2N DESIGNS | Creative Design & Branding Agency in India">
+    <meta property="og:description" content="Elevating brands with modern visual identity, poster design, and innovative branding solutions. Discover B2N DESIGNS.">
+    <meta property="og:image" content="https://placehold.co/1200x630/1a1a2e/ffffff?text=B2N+DESIGNS">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://b2ndesigns.netlify.app/">
+    <meta property="twitter:title" content="B2N DESIGNS | Creative Design & Branding Agency in India">
+    <meta property="twitter:description" content="Elevating brands with modern visual identity, poster design, and innovative branding solutions. Discover B2N DESIGNS.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/1a1a2e/ffffff?text=B2N+DESIGNS">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/f02d65/ffffff?text=B" type="image/png">
+
+    <!-- Stylesheets and Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-    <!-- Internal CSS -->
+    <!-- Custom Styles -->
     <style>
-        /* Base styles with new color palette */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1a1a2e; /* Deep purple */
-            color: #f0f0f0; /* Off-white */
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f1b;
+            color: #e0e0e0;
         }
-
-        /* Gradient text effect with new colors */
+        .b2n-logo-char {
+            display: inline-block;
+        }
         .gradient-text {
-            background: linear-gradient(to right, #ffaf7b, #ff7b7b); /* Warm orange to pink */
+            background: linear-gradient(90deg, #f02d65, #ff7e5f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
         }
-        
-        /* Navigation */
-        .nav-link {
-            @apply text-gray-300 hover:text-white transition-colors duration-300 relative py-1 cursor-pointer;
+        .swiper-pagination-bullet-active {
+            background-color: #f02d65 !important;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #f02d65;
+            border: 4px solid #1a1a2e;
+        }
+        .timeline {
+            border-left: 2px solid #333;
         }
         .nav-link::after {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            display: block;
             width: 0;
             height: 2px;
-            background-color: #ffaf7b; /* Warm orange accent */
-            transition: width 0.3s ease;
+            background: #f02d65;
+            transition: width .3s;
         }
         .nav-link:hover::after, .nav-link.active::after {
             width: 100%;
         }
-        .nav-link.active {
-            @apply text-white;
-        }
-
-        /* Page Header for subpages */
-        .page-header {
-            @apply pt-40 pb-20 text-center bg-gray-900;
-        }
-
-        /* Scroll animation */
-        .scroll-animate {
-            opacity: 0;
-            transition: opacity 0.8s, transform 0.8s;
-            transform: translateY(40px);
-        }
-        .scroll-animate.in-view {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Feature Cards (Home) */
-        .feature-card {
-            @apply bg-gray-900 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-all duration-300 border border-transparent;
-        }
-        .feature-card:hover {
-            border-color: #ffaf7b;
-            box-shadow: 0 0 20px rgba(255, 175, 123, 0.3);
-        }
-        .feature-icon {
-            @apply rounded-lg w-12 h-12 flex items-center justify-center mb-4;
-        }
-
-        /* Team Cards (About) */
-        .team-card {
-            @apply bg-gray-900 p-8 rounded-xl text-center shadow-lg transform hover:scale-105 transition-transform duration-300;
-        }
-        
-        /* Project Cards (Projects) */
-        .project-card {
-            @apply bg-gray-900 rounded-xl overflow-hidden shadow-lg group transform hover:shadow-orange-500/20 transition-all duration-300;
-        }
-        .project-image {
-            @apply w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500;
-        }
-        .tag {
-            @apply inline-block bg-orange-400/20 text-orange-300 text-sm font-semibold px-3 py-1 rounded-full mr-2;
-        }
-        
-        /* Contact Form */
-        .form-input {
-            @apply w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-3 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all;
-        }
-        .cta-button {
-            @apply bg-orange-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-600 transform hover:scale-105 transition-all duration-300;
-        }
-        .contact-icon {
-            @apply mr-4 text-2xl text-orange-400;
-        }
-        
-        /* Page container styles */
-        .page {
-            display: none; /* Hide all pages by default */
-        }
-        .page.active {
-            display: block; /* Show only the active page */
-        }
-
-        /* Typing animation for tagline */
-        .typing-effect {
-            width: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: .15em solid #ffaf7b;
-            animation: typing 3s steps(30, end) forwards, blink-caret .75s step-end infinite;
-            animation-delay: 1s;
-        }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #ffaf7b; }
-        }
     </style>
 </head>
-<body class="antialiased">
+<body class="overflow-x-hidden">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-gray-900/80 backdrop-blur-sm fixed w-full top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-6">
-            <div class="flex items-center justify-between h-20">
-                <a href="#home" class="text-2xl font-bold gradient-text nav-link" data-page="home">B2N</a>
-                <div class="hidden md:flex space-x-8">
-                    <a class="nav-link" data-page="home">Home</a>
-                    <a class="nav-link" data-page="about">About</a>
-                    <a class="nav-link" data-page="projects">Projects</a>
-                    <a class="nav-link" data-page="contact">Contact</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    </button>
-                </div>
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-3xl font-black tracking-wider gradient-text">B2N</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-pink-500 transition-colors duration-300 active" data-page="home">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-pink-500 transition-colors duration-300" data-page="about">About</a>
+                <a href="#projects" class="nav-link text-white hover:text-pink-500 transition-colors duration-300" data-page="projects">Projects</a>
+                <a href="#contact" class="nav-link text-white hover:text-pink-500 transition-colors duration-300" data-page="contact">Contact</a>
             </div>
+            <button id="mobile-menu-btn" class="md:hidden z-50">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#0f0f1b] bg-opacity-95 backdrop-blur-sm z-40 transform -translate-y-full transition-transform duration-500 ease-in-out md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="mobile-nav-link text-2xl text-white" data-page="home">Home</a>
+            <a href="#about" class="mobile-nav-link text-2xl text-white" data-page="about">About</a>
+            <a href="#projects" class="mobile-nav-link text-2xl text-white" data-page="projects">Projects</a>
+            <a href="#contact" class="mobile-nav-link text-2xl text-white" data-page="contact">Contact</a>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a class="nav-link block py-2 px-6 text-sm text-white hover:bg-gray-700" data-page="home">Home</a>
-            <a class="nav-link block py-2 px-6 text-sm text-white hover:bg-gray-700" data-page="about">About</a>
-            <a class="nav-link block py-2 px-6 text-sm text-white hover:bg-gray-700" data-page="projects">Projects</a>
-            <a class="nav-link block py-2 px-6 text-sm text-white hover:bg-gray-700" data-page="contact">Contact</a>
-        </div>
-    </nav>
+    </div>
 
     <main>
-        <!-- Home Page -->
-        <div id="home" class="page">
-            <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
-                <div class="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate__animated animate__pulse animate__infinite"></div>
-                <div class="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate__animated animate__pulse animate__infinite animate__delay-2s"></div>
-                <div class="container mx-auto px-6 text-center z-10">
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-white animate__animated animate__fadeInDown">
-                        B2N <span class="gradient-text">Built to Next</span>
-                    </h1>
-                    <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto typing-effect">
-                        We design and develop fast, beautiful, and inspiring digital experiences.
-                    </p>
-                    <a href="#projects" class="nav-link mt-8 inline-block bg-orange-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-600 transform hover:scale-105 transition-all duration-300 animate__animated animate__zoomIn animate__delay-4s" data-page="projects">
-                        Explore Our Work
-                    </a>
-                </div>
-            </header>
-            <section id="features" class="py-20 bg-gray-900/50">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-16 scroll-animate">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What We Do</h2>
-                        <p class="text-gray-400 max-w-2xl mx-auto">Our core services are designed to deliver comprehensive and high-impact digital products.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="feature-card scroll-animate animate__animated animate__fadeInUp">
-                            <div class="feature-icon bg-orange-400/10 text-orange-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg></div>
-                            <h3 class="text-xl font-bold text-white mb-2">🎨 Logo Design</h3>
-                            <p class="text-gray-400">Crafting unique and memorable logos that define your brand's identity.</p>
-                        </div>
-                        <div class="feature-card scroll-animate animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                            <div class="feature-icon bg-pink-400/10 text-pink-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg></div>
-                            <h3 class="text-xl font-bold text-white mb-2">📖 Brochure Design</h3>
-                            <p class="text-gray-400">Designing elegant brochures for marketing and communication.</p>
-                        </div>
-                        <div class="feature-card scroll-animate animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                            <div class="feature-icon bg-indigo-400/10 text-indigo-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L15.232 5.232z" /></svg></div>
-                            <h3 class="text-xl font-bold text-white mb-2">📋 Brand Guidelines</h3>
-                            <p class="text-gray-400">Creating style guides to ensure brand consistency everywhere.</p>
-                        </div>
-                        <div class="feature-card scroll-animate animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-                            <div class="feature-icon bg-cyan-400/10 text-cyan-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1.586-1.586a2 2 0 00-2.828 0L6 14m6-6l.01.01" /></svg></div>
-                            <h3 class="text-xl font-bold text-white mb-2">🖼️ Poster Design</h3>
-                            <p class="text-gray-400">Designing impactful posters for events and promotions.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <!-- Home Section -->
+        <section id="home" class="page-section min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-50 z-0"></div>
+            <div class="absolute inset-0 z-[-1]">
+                 <div class="absolute inset-0 bg-gradient-to-br from-[#0f0f1b] via-[#1a1a2e] to-[#0f0f1b]"></div>
+                 <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
+                 <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            </div>
+            <div class="container mx-auto px-6 text-center z-10">
+                <h1 id="main-headline" class="text-5xl md:text-8xl font-black text-white uppercase tracking-wider mb-4">
+                    <span class="b2n-logo">
+                        <span class="b2n-logo-char">B</span><span class="b2n-logo-char">2</span><span class="b2n-logo-char">N</span>
+                    </span>
+                    <span class="b2n-logo">
+                        <span class="b2n-logo-char">D</span><span class="b2n-logo-char">E</span><span class="b2n-logo-char">S</span><span class="b2n-logo-char">I</span><span class="b2n-logo-char">G</span><span class="b2n-logo-char">N</span><span class="b2n-logo-char">S</span>
+                    </span>
+                </h1>
+                <p id="sub-headline" class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto">
+                    A creative design agency in India crafting modern visual identities and compelling brand stories.
+                </p>
+            </div>
+        </section>
 
-        <!-- About Page -->
-        <div id="about" class="page">
-            <header class="page-header">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white">About B2N</h1>
-                <p class="mt-4 text-lg text-gray-300">The creative minds behind the pixels.</p>
-            </header>
-            <section class="py-20">
-                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                    <div class="scroll-animate">
-                        <h2 class="text-3xl font-bold text-white mb-4">Our Mission</h2>
-                        <p class="text-gray-400 mb-4">Our mission is to empower businesses and individuals by creating digital experiences that are not only visually stunning but also incredibly fast, intuitive, and reliable. We strive to push the boundaries of design and technology, delivering products that are truly built for the future.</p>
-                        <p class="text-gray-400">We believe in a collaborative process, working closely with our clients to turn their vision into a tangible reality that exceeds expectations.</p>
+        <!-- Highlights Carousel Section -->
+        <section id="highlights" class="py-20 bg-[#1a1a2e]">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-4xl font-bold text-center mb-12">Our Highlights</h2>
+                <div class="swiper-container highlight-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide flex flex-col md:flex-row items-center bg-[#0f0f1b] rounded-lg overflow-hidden p-8">
+                            <img src="https://placehold.co/600x400/f02d65/ffffff?text=Branding" alt="Branding Project" class="w-full md:w-1/2 h-auto object-cover rounded-md mb-6 md:mb-0 md:mr-8" loading="lazy">
+                            <div class="text-left">
+                                <h3 class="text-3xl font-bold mb-2 gradient-text">Brand Identity</h3>
+                                <p class="text-gray-400">We build memorable brands from the ground up, ensuring every element from logo to color palette tells a cohesive story. Your vision, visualized.</p>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide flex flex-col md:flex-row items-center bg-[#0f0f1b] rounded-lg overflow-hidden p-8">
+                            <img src="https://placehold.co/600x400/ff7e5f/ffffff?text=Posters" alt="Poster Design Project" class="w-full md:w-1/2 h-auto object-cover rounded-md mb-6 md:mb-0 md:mr-8" loading="lazy">
+                            <div class="text-left">
+                                <h3 class="text-3xl font-bold mb-2 gradient-text">Poster Design</h3>
+                                <p class="text-gray-400">Our posters are more than just visuals; they are conversations. We design impactful posters that capture attention and communicate messages effectively.</p>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide flex flex-col md:flex-row items-center bg-[#0f0f1b] rounded-lg overflow-hidden p-8">
+                            <img src="https://placehold.co/600x400/f02d65/ffffff?text=Visuals" alt="Visual Identity Project" class="w-full md:w-1/2 h-auto object-cover rounded-md mb-6 md:mb-0 md:mr-8" loading="lazy">
+                            <div class="text-left">
+                                <h3 class="text-3xl font-bold mb-2 gradient-text">Visual Identity</h3>
+                                <p class="text-gray-400">We create comprehensive visual systems that ensure your brand is consistent and recognizable across all platforms, from digital to print.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="scroll-animate">
-                        <img src="https://placehold.co/600x400/1a1a2e/ffaf7b?text=Our+Team" alt="Our Team" class="rounded-lg shadow-2xl">
-                    </div>
+                    <div class="swiper-pagination mt-8"></div>
                 </div>
-            </section>
-            <section class="py-20 bg-gray-900/50">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-16 scroll-animate">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Meet The Team</h2>
-                        <p class="text-gray-400 max-w-2xl mx-auto">A group of passionate designers and developers.</p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="team-card scroll-animate">
-                            <img src="https://placehold.co/400x400/1a1a2e/f0f0f0?text=Bharath+R" alt="Bharath R" class="w-32 h-32 rounded-full mx-auto mb-4 border-2 border-orange-400">
-                            <h3 class="text-xl font-bold text-white">Bharath R</h3>
-                            <p class="gradient-text mb-2 font-semibold">Founder & Lead Developer</p>
-                            <p class="text-gray-400 text-sm">The visionary behind B2N, with a passion for clean code and performance.</p>
-                        </div>
-                        <div class="team-card scroll-animate" style="transition-delay: 100ms;">
-                            <img src="https://placehold.co/400x400/1a1a2e/f0f0f0?text=Jane+Doe" alt="Jane Doe" class="w-32 h-32 rounded-full mx-auto mb-4 border-2 border-orange-400">
-                            <h3 class="text-xl font-bold text-white">Jane Doe</h3>
-                            <p class="gradient-text mb-2 font-semibold">Lead UI/UX Designer</p>
-                            <p class="text-gray-400 text-sm">The creative force who ensures every pixel is perfect and every interaction is intuitive.</p>
-                        </div>
-                        <div class="team-card scroll-animate" style="transition-delay: 200ms;">
-                            <img src="https://placehold.co/400x400/1a1a2e/f0f0f0?text=John+Smith" alt="John Smith" class="w-32 h-32 rounded-full mx-auto mb-4 border-2 border-orange-400">
-                            <h3 class="text-xl font-bold text-white">John Smith</h3>
-                            <p class="gradient-text mb-2 font-semibold">Project Manager</p>
-                            <p class="text-gray-400 text-sm">The organizational guru who keeps every project on track and on time.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <!-- Projects Page -->
-        <div id="projects" class="page">
-            <header class="page-header">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white">Our Work</h1>
-                <p class="mt-4 text-lg text-gray-300">A selection of projects that we're proud of.</p>
-            </header>
-            <section class="py-20">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="project-card scroll-animate">
-                            <img src="https://placehold.co/600x400/1a1a2e/ffaf7b?text=Project+Alpha" class="project-image" alt="Project Alpha">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-bold text-white mb-2">Project Alpha</h3>
-                                <p class="text-gray-400 mb-4">A corporate branding and website redesign for a leading tech firm.</p>
-                                <span class="tag">Branding</span><span class="tag">Web Design</span>
-                            </div>
-                        </div>
-                        <div class="project-card scroll-animate" style="transition-delay: 100ms;">
-                            <img src="https://placehold.co/600x400/1a1a2e/ffaf7b?text=Project+Beta" class="project-image" alt="Project Beta">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-bold text-white mb-2">Project Beta</h3>
-                                <p class="text-gray-400 mb-4">A mobile app for a startup focused on community-building.</p>
-                                <span class="tag">Mobile App</span><span class="tag">UI/UX</span>
-                            </div>
-                        </div>
-                        <div class="project-card scroll-animate" style="transition-delay: 200ms;">
-                            <img src="https://placehold.co/600x400/1a1a2e/ffaf7b?text=Project+Gamma" class="project-image" alt="Project Gamma">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-bold text-white mb-2">Project Gamma</h3>
-                                <p class="text-gray-400 mb-4">An e-commerce platform with a custom backend and payment integration.</p>
-                                <span class="tag">E-commerce</span><span class="tag">Backend</span>
-                            </div>
-                        </div>
+        <!-- About Us Section -->
+        <section id="about" class="page-section py-20 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-4xl font-bold text-center mb-20">Our Story</h2>
+                <div class="timeline relative max-w-3xl mx-auto pl-8">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item mb-16 pl-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-2">2020 - The Spark</h3>
+                        <p class="text-gray-400">B2N DESIGNS was born from a passion for visual storytelling and a desire to challenge the status quo of design in India. A small team with a big vision.</p>
+                    </div>
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item mb-16 pl-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-2">2022 - Growth & Recognition</h3>
+                        <p class="text-gray-400">We expanded our team and services, gaining recognition for our innovative branding work with startups and established companies alike.</p>
+                    </div>
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item mb-16 pl-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-2">2024 - Pushing Boundaries</h3>
+                        <p class="text-gray-400">Embracing new technologies and animation, we started delivering fully immersive digital experiences, setting new benchmarks for creative design.</p>
+                    </div>
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item pl-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-2">Today - Future Forward</h3>
+                        <p class="text-gray-400">Our mission remains the same: to be the leading creative design agency in India, helping brands connect with their audience in meaningful ways.</p>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <!-- Contact Page -->
-        <div id="contact" class="page">
-            <header class="page-header">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white">Get in Touch</h1>
-                <p class="mt-4 text-lg text-gray-300">We'd love to hear from you. Let's build something amazing together.</p>
-            </header>
-            <section class="py-20">
-                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12">
-                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg scroll-animate">
-                        <form action="#" method="POST" class="space-y-6">
-                            <div>
-                                <label for="name" class="sr-only">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Your Name" class="form-input" required>
+        <!-- Projects Section -->
+        <section id="projects" class="page-section py-20 bg-[#1a1a2e]">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-4xl font-bold text-center mb-12">Our Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Item 1 -->
+                    <div class="project-card group relative overflow-hidden rounded-lg">
+                        <img src="https://placehold.co/600x600/f02d65/1a1a2e?text=Project+One" alt="Project One" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center">
+                            <div class="text-center p-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-2">Tech Startup Branding</h3>
+                                <p class="text-gray-300 mb-4">A complete visual identity for a cutting-edge AI company.</p>
+                                <a href="#" class="inline-block bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 transition-colors">View More</a>
                             </div>
-                            <div>
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" name="email" id="email" placeholder="Your Email" class="form-input" required>
-                            </div>
-                            <div>
-                                <label for="message" class="sr-only">Message</label>
-                                <textarea name="message" id="message" rows="5" placeholder="Tell us about your project..." class="form-input" required></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="cta-button">Send Message</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="scroll-animate" style="transition-delay: 100ms;">
-                        <h3 class="text-2xl font-bold text-white mb-4">Contact Details</h3>
-                        <p class="text-gray-400 mb-6">You can also reach us through the following channels. We typically respond within 24 hours.</p>
-                        <div class="space-y-4">
-                            <p class="flex items-center"><span class="contact-icon">📧</span> <a href="mailto:bharathr1130@gmail.com" class="text-gray-300 hover:text-orange-400">bharathr1130@gmail.com</a></p>
-                            <p class="flex items-center"><span class="contact-icon">📞</span> <span class="text-gray-300">+91 123 456 7890</span></p>
-                            <p class="flex items-center"><span class="contact-icon">📍</span> <span class="text-gray-300">Chennai, India</span></p>
                         </div>
                     </div>
+                    <!-- Project Item 2 -->
+                    <div class="project-card group relative overflow-hidden rounded-lg">
+                        <img src="https://placehold.co/600x600/ff7e5f/1a1a2e?text=Project+Two" alt="Project Two" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center">
+                            <div class="text-center p-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-2">E-commerce Campaign</h3>
+                                <p class="text-gray-300 mb-4">Poster and social media visuals for a fashion brand.</p>
+                                <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Item 3 -->
+                    <div class="project-card group relative overflow-hidden rounded-lg">
+                        <img src="https://placehold.co/600x600/f02d65/1a1a2e?text=Project+Three" alt="Project Three" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500 flex items-center justify-center">
+                           <div class="text-center p-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-2">Restaurant Menu Design</h3>
+                                <p class="text-gray-300 mb-4">Elegant and modern menu design for a fine dining restaurant.</p>
+                                <a href="#" class="inline-block bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 transition-colors">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more project items as needed -->
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section py-20 relative overflow-hidden">
+            <div class="container mx-auto px-6 z-10 relative">
+                <h2 class="section-title text-4xl font-bold text-center mb-12">Get In Touch</h2>
+                <div class="max-w-2xl mx-auto bg-[#1a1a2e] p-8 rounded-lg shadow-2xl">
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-[#0f0f1b] border border-gray-600 rounded-md py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-pink-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-[#0f0f1b] border border-gray-600 rounded-md py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-pink-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full bg-[#0f0f1b] border border-gray-600 rounded-md py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-pink-500" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-gradient-to-r from-pink-600 to-orange-500 text-white font-bold py-3 px-8 rounded-full hover:scale-105 transform transition-transform duration-300">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <div id="form-status" class="text-center mt-4"></div>
+                </div>
+                <div class="text-center mt-12">
+                    <p class="text-gray-400 mb-4">Or connect with us on social media:</p>
+                    <div class="flex justify-center space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 transform hover:scale-125">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 transform hover:scale-125">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 transform hover:scale-125">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12.011c0 4.432 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.011C22 6.477 17.523 2 12 2z" clip-rule="evenodd" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
-            <p class="text-lg font-semibold text-white mb-2">B2N — Built to Next</p>
-            <p>Made with <span class="text-orange-400">💙</span> by Bharath R | &copy; 2025</p>
-            <p class="mt-2 text-sm">Contact: <a href="mailto:bharathr1130@gmail.com" class="hover:text-orange-400 transition-colors">bharathr1130@gmail.com</a></p>
+    <footer class="bg-[#0a0a14] py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 B2N DESIGNS. All Rights Reserved.</p>
+            <p class="mt-2 text-sm">Creative Design & Branding Agency in India.</p>
         </div>
     </footer>
 
-    <!-- Internal JavaScript -->
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const pages = document.querySelectorAll('.page');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuButton = document.getElementById('mobile-menu-button');
+            // --- GSAP & ScrollTrigger Registration ---
+            gsap.registerPlugin(ScrollTrigger);
 
-            function showPage(pageId) {
-                // Hide all pages
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-
-                // Show the target page
-                const targetPage = document.getElementById(pageId);
-                if (targetPage) {
-                    targetPage.classList.add('active');
+            // --- Header Scroll Effect ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-[#1a1a2e]', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-[#1a1a2e]', 'shadow-lg');
                 }
-
-                // Update active state in nav
-                navLinks.forEach(link => {
-                    if (link.dataset.page === pageId) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-                
-                // Scroll to top of the page
-                window.scrollTo(0, 0);
-                
-                // Hide mobile menu after navigation
-                mobileMenu.classList.add('hidden');
-            }
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const pageId = link.dataset.page;
-                    window.location.hash = pageId;
-                });
             });
-            
+
             // --- Mobile Menu Toggle ---
-            if (menuButton) {
-                menuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-            // --- Scroll Animation ---
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    } else {
-                        entry.target.classList.remove('in-view'); // Reset when out of view
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            document.querySelectorAll('.scroll-animate').forEach(element => {
-                observer.observe(element);
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('-translate-y-full');
             });
             
-            // --- Handle initial page load and hash changes ---
-            function handleRouting() {
-                let pageId = window.location.hash.substring(1);
-                if (!pageId) {
-                    pageId = 'home'; // Default to home page
-                }
-                showPage(pageId);
-            }
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('-translate-y-full');
+                });
+            });
 
-            window.addEventListener('hashchange', handleRouting);
-            handleRouting(); // Initial page load
+            // --- Smooth Scrolling for all links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // --- Active Nav Link Highlighting on Scroll ---
+            const sections = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.page === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+
+            // --- GSAP Animations ---
+
+            // 1. Home Page: Logo & Headline Animation
+            const logoChars = document.querySelectorAll('.b2n-logo-char');
+            gsap.from(logoChars, {
+                duration: 1,
+                opacity: 0,
+                y: 50,
+                stagger: 0.1,
+                ease: "power3.out",
+                delay: 0.5
+            });
+            gsap.from("#sub-headline", {
+                duration: 1.5,
+                opacity: 0,
+                y: 30,
+                ease: "power3.out",
+                delay: 1.5
+            });
+
+            // 2. Animate elements on scroll
+            const animateOnScroll = (elem, vars) => {
+                gsap.from(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    ...vars
+                });
+            };
+
+            animateOnScroll(".section-title", { opacity: 0, y: 50, duration: 1 });
+            
+            // About Us: Timeline Animation
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%",
+                        toggleActions: "play none none none",
+                    },
+                    opacity: 0,
+                    x: -50,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+
+            // Projects: Card Animation
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 90%",
+                        toggleActions: "play none none none",
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    ease: "power3.out"
+                });
+            });
+
+            // Contact Form Animation
+            animateOnScroll("#contact-form", { opacity: 0, scale: 0.9, duration: 1 });
+
+            // --- Swiper JS Initialization ---
+            const highlightSwiper = new Swiper('.highlight-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+            });
+            
+            // --- Contact Form Submission ---
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // This is a mock submission. For a real site, you'd use a service like Netlify Forms, Formspree, or a backend.
+                formStatus.textContent = 'Thank you! Your message has been sent.';
+                formStatus.className = 'text-green-400';
+                contactForm.reset();
+                setTimeout(() => {
+                    formStatus.textContent = '';
+                }, 5000);
+            });
         });
     </script>
+    
+    <!-- Deployment & SEO Files Suggestions (as comments) -->
+    <!-- 
+    
+    =================================================
+    DEPLOYMENT & FOLDER STRUCTURE
+    =================================================
+    
+    To deploy this website on Netlify:
+    1.  Create a new folder for your project (e.g., `b2n-designs-website`).
+    2.  Save this file as `index.html` inside that folder.
+    3.  Create an `assets` folder for any images you want to use locally instead of placeholders.
+    4.  (Optional but recommended) Create `robots.txt` and `sitemap.xml` files in the root folder.
+    5.  Push this folder to a GitHub repository.
+    6.  Log in to Netlify, click "New site from Git", and select your repository.
+    7.  Netlify will automatically detect it's a static site. The build command can be left empty, and the publish directory should be the root of your project.
+    8.  Deploy!
+    
+    --- FOLDER STRUCTURE ---
+    /
+    |-- index.html (This file)
+    |-- robots.txt
+    |-- sitemap.xml
+    |-- assets/
+        |-- images/
+            |-- og-image.jpg (1200x630px)
+            |-- favicon.png (32x32px or larger)
+            |-- project-1.webp
+            |-- project-2.webp
+    
+    =================================================
+    robots.txt
+    =================================================
+    
+    Create a file named `robots.txt` in your root directory with the following content.
+    This tells search engine crawlers that they can access all parts of your site and points them to your sitemap.
+    
+    User-agent: *
+    Allow: /
+    Sitemap: https://b2ndesigns.netlify.app/sitemap.xml
+    
+    =================================================
+    sitemap.xml
+    =================================================
+    
+    Create a file named `sitemap.xml` in your root directory. This helps search engines understand your site structure.
+    
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <url>
+        <loc>https://b2ndesigns.netlify.app/</loc>
+        <lastmod>2025-07-06</lastmod>
+        <priority>1.00</priority>
+      </url>
+      <url>
+        <loc>https://b2ndesigns.netlify.app/#about</loc>
+        <lastmod>2025-07-06</lastmod>
+        <priority>0.80</priority>
+      </url>
+      <url>
+        <loc>https://b2ndesigns.netlify.app/#projects</loc>
+        <lastmod>2025-07-06</lastmod>
+        <priority>0.80</priority>
+      </url>
+      <url>
+        <loc>https://b2ndesigns.netlify.app/#contact</loc>
+        <lastmod>2025-07-06</lastmod>
+        <priority>0.80</priority>
+      </url>
+    </urlset>
+    
+    -->
 </body>
 </html>

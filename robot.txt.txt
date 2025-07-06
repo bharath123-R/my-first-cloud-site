@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://b2ndesigns.netlify.app/sitemap.xml
